@@ -12,7 +12,7 @@ import xml.etree.cElementTree as ET
 #     </movie>
 # <data>
 
-xmlfile = '/home/pat/.PyCharmCE2017.3/config/scratches/simple_test.xml'
+xmlfile = '/home/pat/Documents/vscode2018/python_code/simple_test.xml'
 tree = ET.ElementTree(file=xmlfile)
 
 # To fetch the root element and is necessary for the rest of the code
@@ -63,16 +63,31 @@ for elem in tree.findall('country'):
 '''
 
 '''
-Element.iter('tag name') it will find the tag but also search in all child nodes for this tag.
-Element.findall() Returns a lits of all elements with a tag which are direct children of the current element. 
-Element.find() Returns a list of the FIRST child element which are direct children of the current element.
+<XML>
+<person sex='Male'>
+    <Name>Joe<Name>
+    <child>
+        <Name>JJunior<Name>
+    <child>
+    <country>Thaiti<country>
+</person>
+<person sex='Male>
+    <Name>Alan<Name>
+    <country>Mongolia<country>
+</person>
+</XML>
+
+Element.iter() To navigate the tree, this is a generator
+Element.iterfind('tagname/tagname') Returns a generator with all elements found at any level
+Element.findall("person[@sex='Male']") returns 2 elements = person
+Element.find("person[@sex='Male']) finds the first match and returns first level elements ie name, child
 Element.get() accesses the element’s attributes
 Element.findtext('tagname') Returns the FIRST sub element having text
 
-if you use methods fnf or findall you count the number of elements returned
+if you use methods find or findall you count the number of elements returned
     print ("{},{}".format(
                     len(Element.find('tagname')),
-                    len(Element.find('tagname'))
+                    len(Element.findall('tagname'))
             )
 '''
 
@@ -91,7 +106,7 @@ if you use methods fnf or findall you count the number of elements returned
 ###########################################
 
 # Example
-# xmlfile2 = '/home/pat/.PyCharmCE2017.3/config/scratches/RationalGroup_ALL_2018-1-21T08-52-42_2018-01-21T08-09-34.XML'
+# xmlfile2 = '/home/pat/Documents/vscode2018/python_code/RationalGroup_ALL_2018-1-21T08-52-42_2018-01-21T08-09-34.XML'
 # tree2 = ET.ElementTree(file=xmlfile2)
 # root2 = tree2.getroot()
 
@@ -123,13 +138,15 @@ if you use methods fnf or findall you count the number of elements returned
 def example_05():
     sxml = """
     <encspot>
-    <file number="1">
-        <Name>some filename.mp3</Name>
+    <file number="1"><Name>some filename.mp3<Subname>This is the alternate text</Subname></Name>
         <Encoder>Gogo (after 3.0)</Encoder>
         <Bitrate>131</Bitrate>
     </file>
-    <file number="2">
-        <Name>another filename.mp3</Name>
+    <file number="2"><Name>Prodigy.mp3</Name>
+        <Encoder>Youtube</Encoder>
+        <Bitrate>256</Bitrate>
+    </file>
+    <file number="1"><Name>another filename.mp3</Name>
         <Encoder>iTunes</Encoder>
         <Bitrate>128</Bitrate>
     </file>
@@ -137,29 +154,46 @@ def example_05():
     """
     tree = ET.fromstring(sxml)
 
-    for el in tree.findall('file'):
+    # Given the results you need to pay close attention to what find and findall do
+
+    print("This searches only the first matching element with attribute number=1 and returns all first level sub                elements.\nIt returns all results not an iterator, count elements: {}".format(
+        len(tree.find("file[@number='1']"))))
+    for el in tree.find("file[@number='1']"):
         print ("el.tag={}, e.attrib={}, el.text={}".format(
             el.tag, el.attrib, el.text))
-        print '-------------------'
-        for ch in el.getchildren():
-            print ('{:>15}: {:<30}'.format(ch.tag, ch.text))
 
-    print "\nan alternate way:"
-    el = tree.find('file[2]/Name')  # xpath
-    print '{:>15}: {:<30}'.format(el.tag, el.text)
+    print ('\n-------------------\n')
+
+    print("This searches (all levels) for all elements with attribute number=1\nIt returns all results not an iterator, count elements:{}".format(
+        len(tree.findall("file[@number='1']"))))
+    for el in tree.findall("file[@number='1']"):
+        print ("el.tag={:>5}, e.attrib={}, el.text={}".format(
+            el.tag, el.attrib, el.text))
+
+    print ('\n-------------------\n')
+
+    print "\nAn alternate way:"
+    # using xpath This searches at all levels even sub level tags have the same name
+    el = tree.findall('.//Subname')
+    print ("type:{}, count result:{}, {}".format(type(el), len(el), el))
+
+    print ('\n-------------------\n')
 
     # To generate a tuples list with a comprehensive expression which all first level tags under file tag
     tuple_of_tag_text = [(ch.tag, ch.text)
                          for e in tree.findall('file') for ch in e.getchildren()]
-    print(tuple_of_tag_text)
-    print(tuple_of_tag_text[1][1])
+
+    print("The list:{}\ne.g.:list elem #2, 2nd elem in tuple: {}".format(tuple_of_tag_text,
+                                                                         tuple_of_tag_text[1][1]))
 
 
 def example_06():
-    xmlfile2 = '/home/pat/Documents/python_code/simple_test.xml'
+    # Using a generator, this will navigate the entire tree
+    xmlfile2 = '/home/pat/Documents/vscode2018/python_code/simple_test.xml'
     tree2 = ET.ElementTree(file=xmlfile2)
     for elem in tree.iter():
-        print (elem.tag, elem.attrib, elem.text)
+        print ("tagname:{},attrib:{},text:'{}'".format(
+            elem.tag, elem.attrib, elem.text))
 
 
 def example_07():
@@ -169,8 +203,8 @@ def example_07():
     When listing all categories the result returned is an iterable elem object which can be searched
     You can nest iterfinds which list all child tags FIRST level only
     '''
-    xmlfile2 = '/home/pat/Documents/python_code/simple_test.xml'
-    xmlfile2 = '/home/pat/.PyCharmCE2017.3/config/scratches/RationalGroup_ALL_2018-1-21T08-52-42_2018-01-21T08-09-34.XML'
+    xmlfile2 = '/home/pat/Documents/vscode2018/python_code/simple_test.xml'
+    xmlfile2 = '/home/pat/Documents/vscode2018/python_code/RationalGroup_ALL_2018-1-21T08-52-42_2018-01-21T08-09-34.XML'
     tree2 = ET.ElementTree(file=xmlfile2)
 
     '''
@@ -184,40 +218,55 @@ def example_07():
                 Texts
                     text
     '''
+    sport = tree2.find('.//Sport[@BetradarSportID="1"]')
+    if sport:
+        print("{}\n".format(len(sport)))
+    sport2 = tree2.find(
+        './/Sport[@BetradarSportID="1"]/Texts/Text[@Language="en"]')  # Returns the first element matching
+    # tree2.findtext('.//Sport[@BetradarSportID="1"]/Texts/Text[@Language="en"]/Value') #Returns a string
+
+    if sport2:
+        print("sport="+sport2.find('Value').text)
+        # for n in sport2.iter():
+        #     print(n.tag, n.attrib, n.text)
+        # print('++++++++++++')
+
+    else:
+        print('nada')
 
     # It will find all tag names and only return the data for it not for the child nodes/tags
-    for cat in tree2.iterfind('Sports/Sport/Category'):
-        BetradarCategoryID = cat.attrib['BetradarCategoryID']
-        # Cat=1 Soccer
+    # for cat in tree2.iterfind('Sports/Sport/Category'):
+    #     BetradarCategoryID = cat.attrib['BetradarCategoryID']
+    #     # Cat=1 Soccer
 
-        # cname = get_text(cat, 'BET')
-        if BetradarCategoryID == '1':
-            # Listing all tournament IDs
+    #     # cname = get_text(cat, 'BET')
+    #     if BetradarCategoryID == '1':
+    #         # Listing all tournament IDs
 
-            for tournament in cat.iterfind('Tournament'):
+    #         for tournament in cat.iterfind('Tournament'):
 
-                # Get tournament ID, TourId=1 Premier league
-                BetradarTournamentID = tournament.attrib['BetradarTournamentID']
+    #             # Get tournament ID, TourId=1 Premier league
+    #             BetradarTournamentID = tournament.attrib['BetradarTournamentID']
 
-                tname = get_text(tournament, 'BET')
-                if BetradarTournamentID == "1":
+    #             tname = get_text(tournament, 'BET')
+    #             if BetradarTournamentID == "1":
 
-                    # Get tournament name
-                    # for t_text in tournament.iterfind('Texts/Text'):
-                    #     # print("{}, {}".format(t_text.tag, t_text.attrib))
-                    #     if t_text.attrib['Language'] == 'en':
-                    #         print("{}, {}".format(
-                    #             count(t_text.items()), t_text[0].text))
-                    # print ('cname:'+cname)
-                    print ('tname:'+tname)
+    #                 # Get tournament name
+    #                 # for t_text in tournament.iterfind('Texts/Text'):
+    #                 #     # print("{}, {}".format(t_text.tag, t_text.attrib))
+    #                 #     if t_text.attrib['Language'] == 'en':
+    #                 #         print("{}, {}".format(
+    #                 #             count(t_text.items()), t_text[0].text))
+    #                 # print ('cname:'+cname)
+    #                 print ('tname:'+tname)
 
-                    # List all match IDs
-                    # for Match in tournament.iterfind('Match'):
-                    #     print ('Match.tag: {}\n Match.attrib: {},\n Match(Match.attrib):{}\n Match.text: "{}"\n type(Match.text): {}\n-----'.format(
-                    #         Match.tag,
-                    #         Match.attrib, type(Match.attrib),
-                    #         Match.text, type(Match.text)
-                    #     ))
+    #                 # List all match IDs
+    #                 # for Match in tournament.iterfind('Match'):
+    #                 #     print ('Match.tag: {}\n Match.attrib: {},\n Match(Match.attrib):{}\n Match.text: "{}"\n type(Match.text): {}\n-----'.format(
+    #                 #         Match.tag,
+    #                 #         Match.attrib, type(Match.attrib),
+    #                 #         Match.text, type(Match.text)
+    #                 #     ))
 
 
 def get_text(elem, language):
