@@ -162,7 +162,7 @@ def example_05():
         print ("el.tag={}, e.attrib={}, el.text={}".format(
             el.tag, el.attrib, el.text))
 
-    print ('\n-------------------\n')
+    print('\n-------------------\n')
 
     print("This searches (all levels) for all elements with attribute number=1\nIt returns all results not an iterator, count elements:{}".format(
         len(tree.findall("file[@number='1']"))))
@@ -191,7 +191,7 @@ def example_06():
     # Using a generator, this will navigate the entire tree
     xmlfile2 = '/home/pat/Documents/vscode2018/python_code/simple_test.xml'
     tree2 = ET.ElementTree(file=xmlfile2)
-    for elem in tree.iter():
+    for elem in tree2.iter():
         print ("tagname:{},attrib:{},text:'{}'".format(
             elem.tag, elem.attrib, elem.text))
 
@@ -218,78 +218,129 @@ def example_07():
                 Texts
                     text
     '''
-    sport = tree2.find('.//Sport[@BetradarSportID="1"]')
-    if sport:
-        print("{}\n".format(len(sport)))
-    sport2 = tree2.find(
-        './/Sport[@BetradarSportID="1"]/Texts/Text[@Language="en"]')  # Returns the first element matching
-    # tree2.findtext('.//Sport[@BetradarSportID="1"]/Texts/Text[@Language="en"]/Value') #Returns a string
 
-    if sport2:
-        print("sport="+sport2.find('Value').text)
-        # for n in sport2.iter():
-        #     print(n.tag, n.attrib, n.text)
-        # print('++++++++++++')
+    # show_tree(tree2, what='Sport')
+    show_matches(tree2, 1, 7, 4)
 
+
+def show_matches(etree, sport=None, country=None, competition=None):
+    '''
+    '''
+    mid = ""
+    mdate = ""
+    cid = ""
+    cname = ""
+    res = ""
+    path = ""
+    count_match = 0
+
+    if sport and country and competition:
+        path = ".//Sport[@BetradarSportID=\"" + str(sport) \
+            + "\"]/Category[@BetradarCategoryID=\"" + \
+            str(country) + \
+            "\"]/Tournament[@BetradarTournamentID=\"" + \
+            str(competition) + "\"]/Match"
+    elif sport and country:
+        path = ".//Sport[@BetradarSportID=\"" + \
+            str(sport) + "\"]/Category[@BetradarCategoryID=\"" + \
+            str(country)+"\"]/Tournament/Match"
+    elif sport:
+        path = ".//Sport[@BetradarSportID=\"" + \
+            str(sport) + "\"]/Category/Tournament/Match"
     else:
-        print('nada')
+        pass
 
-    # It will find all tag names and only return the data for it not for the child nodes/tags
-    # for cat in tree2.iterfind('Sports/Sport/Category'):
-    #     BetradarCategoryID = cat.attrib['BetradarCategoryID']
-    #     # Cat=1 Soccer
+    print('Arguments:\n\tBetradarSportID={} (Sport)\n\t\t|_BetradarCategoryID={} (Country)\n\t\t\t|_BetradarTournamentID={} (Competition)\n'.format(
+        sport, country, competition))
+    for m in etree.iterfind(path):
+        mid = m.attrib['BetradarMatchID']
+        res = mid
+        count_match += 1
 
-    #     # cname = get_text(cat, 'BET')
-    #     if BetradarCategoryID == '1':
-    #         # Listing all tournament IDs
+        for m2 in m.findall('.//Fixture/Competitors/Texts'):
+            for m3 in m2.iter():
+                if any('ID' in s for s in m3.attrib.keys()):
+                    cid = m3.attrib["ID"]
+                    res = res+", ("+cid+")"
+                if any('Language' in s for s in m3.attrib.keys()):
+                    if m3.attrib['Language'] == 'en':
+                        cname = m3.findtext('.//Value')
+                        res = res+cname
+        mdate = m.findtext('.//DateInfo/MatchDate')
+        res = res+", "+mdate
+        print res
+        res = ""
 
-    #         for tournament in cat.iterfind('Tournament'):
-
-    #             # Get tournament ID, TourId=1 Premier league
-    #             BetradarTournamentID = tournament.attrib['BetradarTournamentID']
-
-    #             tname = get_text(tournament, 'BET')
-    #             if BetradarTournamentID == "1":
-
-    #                 # Get tournament name
-    #                 # for t_text in tournament.iterfind('Texts/Text'):
-    #                 #     # print("{}, {}".format(t_text.tag, t_text.attrib))
-    #                 #     if t_text.attrib['Language'] == 'en':
-    #                 #         print("{}, {}".format(
-    #                 #             count(t_text.items()), t_text[0].text))
-    #                 # print ('cname:'+cname)
-    #                 print ('tname:'+tname)
-
-    #                 # List all match IDs
-    #                 # for Match in tournament.iterfind('Match'):
-    #                 #     print ('Match.tag: {}\n Match.attrib: {},\n Match(Match.attrib):{}\n Match.text: "{}"\n type(Match.text): {}\n-----'.format(
-    #                 #         Match.tag,
-    #                 #         Match.attrib, type(Match.attrib),
-    #                 #         Match.text, type(Match.text)
-    #                 #     ))
+    if count_match == 0:
+        print('No Matches/Events Found\n')
+        print("ElemTree Path="+path)
+    else:
+        print('\nMatch Count:' + str(count_match))
 
 
-def get_text(elem, language):
+def show_tree(elem, what='Sport'):
     '''
-    texts can contain several tags called <text> which have 1 attrib and no text
-    text tags can contain only one tag called <value> which have no attrib and text value
-    tagname
-        texts
-            text1
-                value
-            text2
-                value
+        This will display the Betradar XML up to three levels down(Sport > Category > Tournament))
     '''
+    user_choice = ['Sport', 'Country', 'Competition']
+    sport = ""
+    sport_id = ""
+    category = ""
+    category_id = ""
+    tournament = ""
+    tournament_id = ""
 
-    restext = ""
-    for lang in elem.findall('Texts/Text'):
-        # print('{},{},{}'.format(lang.tag, lang.attrib, lang.text))
-        if lang.attrib['Language'] == language:
-            return (lang[0].text)
-            # for t in lang.findall('Value'):
-            #     # print('\t{},{},{}\n'.format(t.tag, t.attrib, t.text))
-            #     return t.text
-    return restext
+    if type(elem).__name__ in ('ElementTree'):
+
+        if what in user_choice:
+            # Find all sports
+            for sp in elem.iterfind('.//Sport'):
+                sport = sp.findtext('.//Texts/Text[@Language="en"]/Value')
+                sport_id = sp.attrib.values()[0]
+                if what in user_choice[0]:
+                    print("{}={}".format(sport, sport_id))
+
+                # Only if user wants to see L2 and L3 the below is executed
+                if what in user_choice[1:]:
+                    # Find all sports and category (country)
+                    for c in sp.iterfind('.//Category'):
+                        category = c.findtext(
+                            './/Texts/Text[@Language="en"]/Value')
+                        category_id = c.attrib.values()[0]
+                        if what in user_choice[1]:
+                            print(" {}={}, {}={}".format(sport, sport_id,
+                                                         category, category_id))
+
+                        # Only if user wants to see L3 the below is executed
+                        if what in user_choice[2]:
+                            # Find all sports and category (country) and tournament (competition)
+                            for t in c.iterfind('.//Tournament'):
+                                tournament = t.findtext(
+                                    './/Texts/Text[@Language="en"]/Value')
+                                tournament_id = t.attrib.values()[0]
+                                print(" {}={}, {}={}, {}={}".format(sport, sport_id,
+                                                                    category, category_id, tournament, tournament_id))
+        else:
+            print('Wrong Choice "{}", choose from :{}'.format(what, user_choice))
+    else:
+        print("{} is not an element but it a {}".format(elem, type(elem)))
+        if type(e).__name__ == 'list':
+            for n in elem:
+                for n2 in n.iter():
+                    print("tag:{}, attributes:{}, text:{}".format(
+                        n2.tag, n2.attrib, n2.text))
+
+
+def show_text(e):
+    res = {}
+    if type(e).__name__ == 'Element':
+        if e.tag in ('Sport', 'Category', 'Tournament'):
+            en_text = e.findtext('Texts/Text[@Language="en"]/Value')
+            id_attrib = e.attrib.values()[0]
+            print("{},{},{}".format(id_attrib, e.tag, en_text))
+            res[en_text] = id_attrib
+
+    return res
 
 
 def main():
