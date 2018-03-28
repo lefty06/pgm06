@@ -1,0 +1,43 @@
+
+#VSCODE INDENTATION
+Basically you need to keep it consistent or you only use tabs or only 4 spaces
+at the bottom of the editor (status bar) you can click on tabs or spaces and a menu will show up to convert all tabs by 4 spaces or the opposite.
+Forum explanation:
+By default, VSCode will try to guess your indentation options depending on the file you open.
+
+You can turn off indentation guessing via "editor.detectIndentation": false
+
+You can customize this easily via these 3 settings in File > Preferences > User Settings:
+
+// The number of spaces a tab is equal to. This setting is overriden
+// based on the file contents when `editor.detectIndentation` is true.
+"editor.tabSize": 4,
+
+// Insert spaces when pressing Tab. This setting is overriden
+// based on the file contents when `editor.detectIndentation` is true.
+"editor.insertSpaces": true,
+
+// When opening a file, `editor.tabSize` and `editor.insertSpaces`
+// will be detected based on the file contents. Set to false to keep
+// the values you've explicitly set, above.
+"editor.detectIndentation": false
+
+
+python -i script_name.py
+func_name
+func_name.__module__ #to tell whether this is a function or class
+func_name.__name__	#to tell name
+func_name.__defaults	#to return the defaults parameters if any
+func_name.__code__	#to return the file name that contains the module or function
+func_name.__code__.co_nlocals	#to return the number of arguments the function takes
+func_name.__code__.co_name	#to 
+func_name.__code__.co_varnames	#to list all variables used in the function or class
+
+from inspect import getsource
+
+print (getsource(func_name))	#to return the entire definition of the function
+
+from inspect import getfile
+getfile(func_name)	#to return the file name containing the function or class
+
+
