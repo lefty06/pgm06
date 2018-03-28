@@ -219,8 +219,8 @@ def example_07():
                     text
     '''
 
-    # show_tree(tree2, what='Sport')
-    show_matches(tree2, 1, 7, 4)
+    # show_tree(tree2, what='Competition')
+    show_matches(tree2, 21, 105, 7664)
 
 
 def show_matches(etree, sport=None, country=None, competition=None):
@@ -259,8 +259,8 @@ def show_matches(etree, sport=None, country=None, competition=None):
 
         for m2 in m.findall('.//Fixture/Competitors/Texts'):
             for m3 in m2.iter():
-                if any('ID' in s for s in m3.attrib.keys()):
-                    cid = m3.attrib["ID"]
+                if any('SUPERID' in s for s in m3.attrib.keys()):
+                    cid = m3.attrib["SUPERID"]
                     res = res+", ("+cid+")"
                 if any('Language' in s for s in m3.attrib.keys()):
                     if m3.attrib['Language'] == 'en':
