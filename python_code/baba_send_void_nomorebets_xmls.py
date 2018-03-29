@@ -4,6 +4,7 @@ import logging
 import time
 import re
 import os
+import subprocess as s
 
 
 log_level = 10  # TRACE
@@ -18,7 +19,7 @@ def xml_output(msgtype, drawid):
         args:
             msgtype: [Void|NoMorebets]
             drawid: [Int|String]
-        return: 
+        return:
             string
     '''
     if msgtype in ('NoMoreBets', 'Void'):
@@ -46,7 +47,7 @@ def write_xml(filename, xml_msg, dryrun=False):
             logging.debug(
                 "Writing the below message in {}\n{}".format(filename, xml_msg))
         else:
-            logging.debug(
+            logging.info(
                 "Writing message in {}".format(filename))
             with open(filename, 'w') as f:
                 f.write(xml_msg)
@@ -54,7 +55,7 @@ def write_xml(filename, xml_msg, dryrun=False):
 
 def execute_command(filename, dryrun=False):
     '''
-        To curl a file to an hard coded url
+        Checks if the file exists and then tries to curl it to an hard coded URL
 
         args:
             filename: file to send
@@ -70,7 +71,16 @@ def execute_command(filename, dryrun=False):
             logging.debug(
                 "file '{}' does not exist, exiting script".format(filename))
             exit(1)
-        logging.debug("Sending file {} to {}".format(filename, url))
+        logging.info("Sending file {} to {}".format(filename, url))
+        doit = s.Popen(cmd, shell=True,
+                       stdout=s.PIPE, stderr=s.PIPE)
+        (stdout, stderr) = doit.communicate()
+        # print("stdout:{}\nstderr:{}".format(
+        # repr(stdout), stderr))
+        if stderr:
+            logging.error(
+                "There was an error curling the message\n{}".format(stderr))
+
         # body = 'eventId,eventCode;' + result
         # query_args = { 'sessionToken':'blah', 'tvo':'true' ,'attributes': body}
         # request = urllib2.Request(args.attrAPI)
@@ -100,8 +110,8 @@ def main():
                         default=False, help='Show details without executing')
 
     # a = ['--nomorebets', '123, 456;589', '--dry-run']
-    # a = ['--void', '123, 456;589']
-    args = parser.parse_args()
+    a = ['--void', '123']
+    args = parser.parse_args(a)
     if args.boolean_switch:
         dry_run = args.boolean_switch
 
@@ -116,8 +126,9 @@ def main():
         filename = msgtype + '.xml'
 
     if draw_list:
+        logging.info("Draw list total: {}".format(len(draw_list)))
         for draw_id in draw_list:
-            logging.debug("Handling draw_id={}".format(draw_id))
+            logging.info("Handling draw_id={}".format(draw_id))
             msg = xml_output(msgtype, draw_id)
             write_xml(filename, msg, dry_run)
             execute_command(filename, dry_run)
