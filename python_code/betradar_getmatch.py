@@ -4,7 +4,7 @@ import xml.etree.cElementTree as ET
 import argparse
 
 
-def show_matches(etree, sport=None, country=None, competition=None):
+def show_matches(etree, search_list):
     '''
     '''
     mid = ""
@@ -15,24 +15,34 @@ def show_matches(etree, sport=None, country=None, competition=None):
     path = ""
     count_match = 0
 
-    if sport and country and competition:
-        path = ".//Sport[@BetradarSportID=\"" + str(sport) \
-            + "\"]/Category[@BetradarCategoryID=\"" + \
-            str(country) + \
-            "\"]/Tournament[@BetradarTournamentID=\"" + \
-            str(competition) + "\"]/Match"
-    elif sport and country:
+    search_args = {'sport': None, 'country': None, 'competition': None}
+
+    if len(search_list) >= 3:
+        search_args['sport'] = search_list[0]
+        search_args['country'] = search_list[1]
+        search_args['competition'] = search_list[2]
+    if len(search_list) == 2:
+        search_args['sport'] = search_list[0]
+        search_args['country'] = search_list[1]
+    if len(search_list) == 1:
+        search_args['sport'] = search_list[0]
+
+    if search_args['sport'] and search_args['country'] and search_args['competition']:
+        path = ".//Sport[@BetradarSportID=\"" + search_args['sport'] + "\"]/Category[@BetradarCategoryID=\"" + \
+            search_args['country'] + "\"]/Tournament[@BetradarTournamentID=\"" + \
+            search_args['competition'] + "\"]/Match"
+    elif search_args['sport'] and search_args['country']:
+        path = ".//Sport[@BetradarSportID=\"" + search_args['sport'] + \
+            "\"]/Category[@BetradarCategoryID=\"" + \
+            search_args['country']+"\"]/Tournament/Match"
+    elif search_args['sport']:
         path = ".//Sport[@BetradarSportID=\"" + \
-            str(sport) + "\"]/Category[@BetradarCategoryID=\"" + \
-            str(country)+"\"]/Tournament/Match"
-    elif sport:
-        path = ".//Sport[@BetradarSportID=\"" + \
-            str(sport) + "\"]/Category/Tournament/Match"
+            search_args['sport'] + "\"]/Category/Tournament/Match"
     else:
         pass
 
     print('Arguments:\n\tBetradarSportID={} (Sport)\n\t\t|_BetradarCategoryID={} (Country)\n\t\t\t|_BetradarTournamentID={} (Competition)\n'.format(
-        sport, country, competition))
+        search_args['sport'], search_args['country'], search_args['competition']))
     for m in etree.iterfind(path):
         mid = m.attrib['BetradarMatchID']
         res = mid
@@ -126,7 +136,7 @@ def main():
     group.add_argument('-l', '--list', action='store', dest='show_tree',
                        choices=['Sport', 'Country', 'Competition'], help='this is it')
     group.add_argument('-s', '--search', dest='ids', nargs='+',
-                       help='uma lista de INTs caralho')
+                       help='SportId, CountryId, CompetitionId')
 
     #-f is mandatory
     parser.add_argument('-f', '--file', type=argparse.FileType('r'),
@@ -139,7 +149,7 @@ def main():
         show_tree(tree, args.show_tree)
     if args.ids:
         # Need to sort this shit out, its messy or change the function parameters
-        show_matches(tree, args.ids[0], args.ids[1])
+        show_matches(tree, args.ids)
 
 
 if __name__ == '__main__':
