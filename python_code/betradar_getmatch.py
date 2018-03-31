@@ -2,6 +2,7 @@
 # coding=UTF-8
 import xml.etree.cElementTree as ET
 import argparse
+import re
 
 
 def show_matches(etree, search_list):
@@ -148,8 +149,7 @@ def main():
     if args.show_tree:
         show_tree(tree, args.show_tree)
     if args.ids:
-        # Need to sort this shit out, its messy or change the function parameters
-        show_matches(tree, args.ids)
+        show_matches(tree, re.split(",|;| ", " ".join(args.ids)))
 
 
 if __name__ == '__main__':
