@@ -5,6 +5,7 @@ import time
 import re
 import os
 import subprocess as s
+import sys
 
 
 log_level = 10  # TRACE
@@ -99,7 +100,8 @@ def main():
     dry_run = ""
     msgtype = ""
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description='To curl and xml with void or nomorebets to the BABA end point')
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--void', action='store', dest='Voidlist',
                        help='The draw list can be comma,space,semi colon delimited')
@@ -110,8 +112,11 @@ def main():
                         default=False, help='Show details without executing')
 
     # a = ['--nomorebets', '123, 456;589', '--dry-run']
-    a = ['--void', '123']
-    args = parser.parse_args(a)
+    #a = ['--void', '123']
+    if len(sys.argv) <= 1:
+        args = parser.parse_args(['-h'])
+
+    args = parser.parse_args()
     if args.boolean_switch:
         dry_run = args.boolean_switch
 
