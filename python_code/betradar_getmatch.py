@@ -145,11 +145,18 @@ def main():
 
     #  Cricket = 21, International = 105, U19 World Cup, Group A = 7664
     # args = parser.parse_args(['-f', xmlfile, '-s', '21', '105', '7664'])
+
     args = parser.parse_args()
+
     if args.show_tree:
         show_tree(tree, args.show_tree)
+
     if args.ids:
         show_matches(tree, re.split(",|;| ", " ".join(args.ids)))
+
+    if args.fname and not args.show_tree and not args.ids:
+        print("\nError Usage: -f must be used with option -l or -s\n")
+        args = parser.parse_args(['-h'])
 
 
 if __name__ == '__main__':
