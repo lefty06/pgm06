@@ -125,8 +125,8 @@ def show_tree(elem, what='Sport'):
 
 def main():
 
-    xmlfile = '/home/pat/Documents/vscode2018/python_code/RationalGroup_ALL_2018-1-21T08-52-42_2018-01-21T08-09-34.XML'
-    tree = ET.ElementTree(file=xmlfile)
+    xmlfile = ""
+    tree = ""
 
     parser = argparse.ArgumentParser(
         description='Get bets from a list of IDs or a file with IDs')
@@ -146,7 +146,19 @@ def main():
     #  Cricket = 21, International = 105, U19 World Cup, Group A = 7664
     # args = parser.parse_args(['-f', xmlfile, '-s', '21', '105', '7664'])
 
+    # Testing the script
+    # xmlfile = '/home/pat/Documents/vscode2018/python_code/RationalGroup_ALL_2018-1-21T08-52-42_2018-01-21T08-09-34.XML'
+    # a = ['-f', xmlfile, '-l', 'Competition']
+    # args = parser.parse_args(a)
+
     args = parser.parse_args()
+    if args.fname:
+        xmlfile = args.fname
+        try:
+            tree = ET.ElementTree(file=xmlfile)
+        except:
+            print("\nParsing error, wrong format XML:\n{}".format(xmlfile))
+            exit(1)
 
     if args.show_tree:
         show_tree(tree, args.show_tree)
