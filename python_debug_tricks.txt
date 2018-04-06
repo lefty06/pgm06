@@ -1,5 +1,14 @@
 
-#VSCODE INDENTATION
+#-------------#
+#	LINKS     #
+#-------------#
+# 6/10 http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html #Tips to use python syntax
+
+
+
+#-----------------------#
+#   VSCODE INDENTATION  #
+#-----------------------#
 Basically you need to keep it consistent or you only use tabs or only 4 spaces
 at the bottom of the editor (status bar) you can click on tabs or spaces and a menu will show up to convert all tabs by 4 spaces or the opposite.
 Forum explanation:
@@ -23,6 +32,34 @@ You can customize this easily via these 3 settings in File > Preferences > User 
 "editor.detectIndentation": false
 
 
+#-----------#
+# VS CONFIG #
+#-----------#
+{
+    "window.zoomLevel": -1,
+    "workbench.startupEditor": "welcomePage",
+    "editor.fontSize": 12,
+    "python.linting.flake8Enabled": true,
+    "python.formatting.provider": "autopep8",
+    "editor.formatOnSave": true,
+    "python.linting.pylintArgs": [
+        "--disable=C011"
+    ],
+    "git.ignoreMissingGitWarning": true,
+    "python.pythonPath": "/usr/bin/python2.7",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 60,
+    "code-runner.clearPreviousOutput": true,
+    "atomKeymap.promptV3Features": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnPaste": true,
+    "workbench.colorTheme": "Monokai Dimmed",
+    "editor.wordWrap": "on"
+}
+
+#------------------------------------#
+# to explorer objects used from REPL #
+#------------------------------------#
 python -i script_name.py
 func_name
 func_name.__module__ #to tell whether this is a function or class
