@@ -7,6 +7,22 @@
 
 
 #-----------------------#
+#   VSCODE SHORTCUTS	#
+#-----------------------#
+#Some of the Atom shortcuts will apply if you install the extension
+F5 - Start Debug ( you must add a break point)
+Shift + F5 - Stop Debug
+F9 - Add break point
+F10 - Debug line by line
+F12 - Go to definition (select function name)
+Shift + F12 - Show all references (select function name)
+crtl + Shift + n - To compile script
+ctrl + / - To comment out line (you can select several lines)
+crtl + Shift + d - To duplicate a line (you can select several lines)
+ctrl + [up|down] arrow key - To move text up and down (you can select several lines)
+
+
+#-----------------------#
 #   VSCODE INDENTATION  #
 #-----------------------#
 Basically you need to keep it consistent or you only use tabs or only 4 spaces
@@ -56,6 +72,8 @@ You can customize this easily via these 3 settings in File > Preferences > User 
     "workbench.colorTheme": "Monokai Dimmed",
     "editor.wordWrap": "on"
 }
+
+
 
 #------------------------------------#
 # to explorer objects used from REPL #

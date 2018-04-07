@@ -1,0 +1,39 @@
+#install ATOM
+sudo add-apt-repository ppa:webupd8team/atom
+sudo apt-get update
+sudo apt-get install atom
+
+#install packages for autocompletion and compile bash/python
+apm install autocomplete-python script open-recent seti-icons monokai highlight-selected highlight-line Sublime-Style-Column-Selection File-icons minimap
+
+Note:If after installing ATOM from scratch, ATOM does not open properly with strange visual artefacts it could be because of Virtual box bug (disable 3d acceleration)
+
+#uninstall ATOM
+#sudo apt-get remove atom #deprecated
+sudo apt-get install ppa-purge
+sudo ppa-purge ppa_name
+sudo add-apt-repository --remove ppa:webupd8team/atom
+This will remove Atom and the PPA repository. A good thing to do would be to run auto remove as well.
+sudo apt-get autoremove
+
+
+#update ATOM packages
+sudo apm update #Updating through the GUI does not work because of permissions apparently
+
+*****************
+*   Shortcuts   *
+*****************
+ctrl + Shift + b : To execute script
+ctrl + , : To access ATOM settings
+ctrl + \ : Toggle (Display/hide) Tree View
+Alt + r : To execute script (Atom-runner package dependent)
+ctrl + t : To search/access files and options
+ctrl + 0 : To focus on Treeview
+ctrl + Alt + d : To duplicate the selection (text/line selected first)
+Shift + Alt + arrow down/up : To select text on column
+ctrl + Shift + p: To install package
+crtl + e : Search and replace
+Ctrl + . : Show shortcuts
+Ctrl + / : Comment lines
+Ctrl + Up/down arrow: to shift a row up of down
+Ctrl + Shift + Up/Down arrow, and then type ''' (single quotes): Comment code block
