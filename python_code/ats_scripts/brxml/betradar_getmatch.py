@@ -147,7 +147,7 @@ def main():
     # args = parser.parse_args(['-f', xmlfile, '-s', '21', '105', '7664'])
 
     # Testing the script
-    # xmlfile = '/home/pat/Documents/vscode2018/python_code/RationalGroup_ALL_2018-1-21T08-52-42_2018-01-21T08-09-34.XML'
+    # xmlfile = '/home/pat/Documents/vscode2018/python_code/BR_FTP001.xml'
     # a = ['-f', xmlfile, '-l', 'Competition']
     # args = parser.parse_args(a)
 

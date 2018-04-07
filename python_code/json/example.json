@@ -1,0 +1,499 @@
+{
+    "query": {
+        "latitude": 34.078195,
+        "longitude": -118.185497,
+        "address": "90032",
+        "confidence": 0.714,
+        "precision": "zip"
+    },
+    "timestamp": 1313717557.449,
+    "features": [
+        {
+            "handle": "SG_13ChTM4q9Qo0OoZI5q453G_34.078617_-118.185973",
+            "href": "http://api.simplegeo.com/1.0/features/SG_13ChTM4q9Qo0OoZI5q453G_34.078617_-118.185973.json",
+            "abbr": null,
+            "attribution": "(c) OpenStreetMap (http://openstreetmap.org/) and contributors",
+            "classifiers": [
+                {
+                    "category": "Commercial Area",
+                    "type": "Public Place",
+                    "subcategory": null
+                }
+            ],
+            "name": "KMPC-AM",
+            "license": "http://creativecommons.org/licenses/by-sa/2.0/",
+            "bounds": [
+                -118.187194,
+                34.076831,
+                -118.184752,
+                34.080421
+            ]
+        },
+        {
+            "handle": "SG_5zlubcQBdPWX5zY02QtxeT_34.080185_-118.184829",
+            "name": "06037201401",
+            "license": "http://creativecommons.org/publicdomain/mark/1.0/",
+            "bounds": [
+                -118.193786,
+                34.075513,
+                -118.178021,
+                34.086444
+            ],
+            "href": "http://api.simplegeo.com/1.0/features/SG_5zlubcQBdPWX5zY02QtxeT_34.080185_-118.184829.json",
+            "abbr": null,
+            "classifiers": [
+                {
+                    "category": "US Census",
+                    "type": "Region",
+                    "subcategory": "Tract"
+                }
+            ]
+        },
+        {
+            "handle": "SG_01i8SelQjR6LBuBBGei63D_34.081001_-118.177407",
+            "name": "El Sereno",
+            "license": "Not For Redistribution",
+            "bounds": [
+                -118.19758,
+                34.061731,
+                -118.155504,
+                34.105109
+            ],
+            "href": "http://api.simplegeo.com/1.0/features/SG_01i8SelQjR6LBuBBGei63D_34.081001_-118.177407.json",
+            "abbr": null,
+            "classifiers": [
+                {
+                    "category": "Neighborhood",
+                    "type": "Region",
+                    "subcategory": null
+                }
+            ]
+        },
+        {
+            "handle": "SG_0Zvp5oQfiIlufuV5WlR0Bs_34.079519_-118.177738",
+            "name": "90032",
+            "license": "http://creativecommons.org/publicdomain/mark/1.0/",
+            "bounds": [
+                -118.202841,
+                34.060453,
+                -118.155292,
+                34.101921
+            ],
+            "href": "http://api.simplegeo.com/1.0/features/SG_0Zvp5oQfiIlufuV5WlR0Bs_34.079519_-118.177738.json",
+            "abbr": null,
+            "classifiers": [
+                {
+                    "category": "Postal Code",
+                    "type": "Region",
+                    "subcategory": null
+                }
+            ]
+        },
+        {
+            "handle": "SG_2EAf2lwKihpnQQbH5qQBow_34.085193_-118.233164",
+            "name": "Assembly District 45",
+            "license": "http://creativecommons.org/publicdomain/mark/1.0/",
+            "bounds": [
+                -118.344812,
+                34.040466,
+                -118.155292,
+                34.126937
+            ],
+            "href": "http://api.simplegeo.com/1.0/features/SG_2EAf2lwKihpnQQbH5qQBow_34.085193_-118.233164.json",
+            "abbr": null,
+            "classifiers": [
+                {
+                    "category": "Legislative District",
+                    "type": "Region",
+                    "subcategory": "Provincial (Lower)"
+                }
+            ]
+        },
+        {
+            "handle": "SG_0iiFtWc7rXBJ6VYl2kuO0L_34.085508_-117.985139",
+            "name": "Congressional District 32",
+            "license": "http://creativecommons.org/publicdomain/mark/1.0/",
+            "bounds": [
+                -118.196746,
+                34.001855,
+                -117.840549,
+                34.194325
+            ],
+            "href": "http://api.simplegeo.com/1.0/features/SG_0iiFtWc7rXBJ6VYl2kuO0L_34.085508_-117.985139.json",
+            "abbr": null,
+            "classifiers": [
+                {
+                    "category": "Legislative District",
+                    "type": "Region",
+                    "subcategory": "National"
+                }
+            ]
+        },
+        {
+            "handle": "SG_7NZeInBzM4Mv73P62VZzjl_34.074117_-117.991920",
+            "name": "State Senate District 24",
+            "license": "http://creativecommons.org/publicdomain/mark/1.0/",
+            "bounds": [
+                -118.215856,
+                33.986182,
+                -117.840549,
+                34.194731
+            ],
+            "href": "http://api.simplegeo.com/1.0/features/SG_7NZeInBzM4Mv73P62VZzjl_34.074117_-117.991920.json",
+            "abbr": null,
+            "classifiers": [
+                {
+                    "category": "Legislative District",
+                    "type": "Region",
+                    "subcategory": "Provincial (Upper)"
+                }
+            ]
+        },
+        {
+            "handle": "SG_63gaN6Xi7zAjBxeFk74UBz_34.106997_-118.411704",
+            "name": "Los Angeles",
+            "license": "http://creativecommons.org/publicdomain/mark/1.0/",
+            "bounds": [
+                -118.668176,
+                33.703652,
+                -118.155289,
+                34.337306
+            ],
+            "href": "http://api.simplegeo.com/1.0/features/SG_63gaN6Xi7zAjBxeFk74UBz_34.106997_-118.411704.json",
+            "abbr": null,
+            "classifiers": [
+                {
+                    "category": "Municipal",
+                    "type": "Region",
+                    "subcategory": "City"
+                }
+            ]
+        },
+        {
+            "handle": "SG_5lHwuPKvcJYpKhy8MR1ZMZ_34.100887_-118.390729",
+            "name": "Los Angeles Unified School District",
+            "license": "http://creativecommons.org/publicdomain/mark/1.0/",
+            "bounds": [
+                -118.668058,
+                33.659547,
+                -118.142667,
+                34.353672
+            ],
+            "href": "http://api.simplegeo.com/1.0/features/SG_5lHwuPKvcJYpKhy8MR1ZMZ_34.100887_-118.390729.json",
+            "abbr": null,
+            "classifiers": [
+                {
+                    "category": "School District",
+                    "type": "Region",
+                    "subcategory": "Unified"
+                }
+            ]
+        },
+        {
+            "handle": "SG_6RRdLsqpHXF3Yu1EXCPORn_33.971007_-117.971917",
+            "name": "Los Angeles",
+            "license": "http://creativecommons.org/publicdomain/mark/1.0/",
+            "bounds": [
+                -118.991667,
+                33.391667,
+                -117.008333,
+                34.333333
+            ],
+            "href": "http://api.simplegeo.com/1.0/features/SG_6RRdLsqpHXF3Yu1EXCPORn_33.971007_-117.971917.json",
+            "abbr": null,
+            "classifiers": [
+                {
+                    "category": "Urban Area",
+                    "type": "Region",
+                    "subcategory": null
+                }
+            ]
+        },
+        {
+            "handle": "SG_6Em6St6NgZtuvorHtngjTU_34.197952_-118.261063",
+            "name": "Los Angeles",
+            "license": "http://creativecommons.org/publicdomain/mark/1.0/",
+            "bounds": [
+                -118.951721,
+                32.75004,
+                -117.645604,
+                34.823193
+            ],
+            "href": "http://api.simplegeo.com/1.0/features/SG_6Em6St6NgZtuvorHtngjTU_34.197952_-118.261063.json",
+            "abbr": null,
+            "classifiers": [
+                {
+                    "category": "Administrative",
+                    "type": "Region",
+                    "subcategory": "County"
+                }
+            ]
+        },
+        {
+            "handle": "SG_2MySaPILVQG3MoXrsVehyR_37.215297_-119.663837",
+            "name": "California",
+            "license": "http://creativecommons.org/publicdomain/mark/1.0/",
+            "bounds": [
+                -124.482003,
+                32.528832,
+                -114.131211,
+                42.009517
+            ],
+            "href": "http://api.simplegeo.com/1.0/features/SG_2MySaPILVQG3MoXrsVehyR_37.215297_-119.663837.json",
+            "abbr": "CA",
+            "classifiers": [
+                {
+                    "category": "Subnational",
+                    "type": "Region",
+                    "subcategory": "State"
+                }
+            ]
+        },
+        {
+            "handle": "SG_3tLT0I5cOUWIpoVOBeScOx_41.316130_-119.116571",
+            "name": "America/Los_Angeles",
+            "license": "creativecommons.org/publicdomain/zero/1.0/",
+            "bounds": [
+                -124.733253,
+                32.534622,
+                -114.039345,
+                49.002892
+            ],
+            "href": "http://api.simplegeo.com/1.0/features/SG_3tLT0I5cOUWIpoVOBeScOx_41.316130_-119.116571.json",
+            "abbr": null,
+            "classifiers": [
+                {
+                    "category": "Time Zone",
+                    "type": "Region",
+                    "subcategory": null
+                }
+            ]
+        },
+        {
+            "handle": "SG_3uwSAEdXVBzK1ZER9Nqkdp_45.687160_-112.493107",
+            "name": "United States of America",
+            "license": "http://creativecommons.org/publicdomain/mark/1.0/",
+            "bounds": [
+                -179.142471,
+                18.930138,
+                179.78115,
+                71.41218
+            ],
+            "href": "http://api.simplegeo.com/1.0/features/SG_3uwSAEdXVBzK1ZER9Nqkdp_45.687160_-112.493107.json",
+            "abbr": null,
+            "classifiers": [
+                {
+                    "category": "National",
+                    "type": "Region",
+                    "subcategory": null
+                }
+            ]
+        }
+    ],
+    "weather": {
+        "wind_speed": "0 meters per second",
+        "temperature": "84F",
+        "dewpoint": "57F",
+        "cloud_cover": "0%",
+        "wind_direction": "0 degrees",
+        "forecast": {
+            "tonight": {
+                "conditions": "Fog",
+                "precipitation": "0%",
+                "temperature": {
+                    "max": "70F",
+                    "min": "66F"
+                }
+            },
+            "tomorrow": {
+                "conditions": "Clear",
+                "precipitation": "0%",
+                "temperature": {
+                    "max": "89F",
+                    "min": "68F"
+                }
+            },
+            "today": {
+                "conditions": "Mostly clear",
+                "precipitation": "0%",
+                "temperature": {
+                    "max": "94F",
+                    "min": "71F"
+                }
+            }
+        },
+        "conditions": "Clear"
+    },
+    "demographics": {
+        "population_density": 5808,
+        "acs": {
+            "error": "You must supply ACS table IDs with demographics.acs__table=<table_id_1>&demographics.acs__table=<table_id_2>... parameters."
+        }
+    },
+    "intersections": [
+        {
+            "distance": 277.0035787874508,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.1874986,
+                    34.0800544
+                ]
+            },
+            "properties": {
+                "highways": [
+                    {
+                        "osm_way_id": "13375722",
+                        "type": "residential",
+                        "name": "Bowman Boulevard"
+                    },
+                    {
+                        "osm_way_id": "13435504",
+                        "type": "residential",
+                        "name": "Verdemour Avenue"
+                    }
+                ],
+                "attribution": "(c) OpenStreetMap (http://openstreetmap.org/) and contributors",
+                "license": "http://creativecommons.org/licenses/by-sa/2.0/"
+            },
+            "type": "Feature",
+            "id": "123133103"
+        },
+        {
+            "distance": 278.5007862228104,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.187905,
+                    34.07971
+                ]
+            },
+            "properties": {
+                "highways": [
+                    {
+                        "osm_way_id": "13375722",
+                        "type": "residential",
+                        "name": "Bowman Boulevard"
+                    },
+                    {
+                        "osm_way_id": "13286592",
+                        "type": "residential",
+                        "name": "Lynnfield Street"
+                    },
+                    {
+                        "osm_way_id": "13435505",
+                        "type": "residential",
+                        "name": "Verdemour Avenue"
+                    }
+                ],
+                "attribution": "(c) OpenStreetMap (http://openstreetmap.org/) and contributors",
+                "license": "http://creativecommons.org/licenses/by-sa/2.0/"
+            },
+            "type": "Feature",
+            "id": "122609716"
+        },
+        {
+            "distance": 295.66530721862495,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.1870694,
+                    34.0805132
+                ]
+            },
+            "properties": {
+                "highways": [
+                    {
+                        "osm_way_id": "13375722",
+                        "type": "residential",
+                        "name": "Bowman Boulevard"
+                    },
+                    {
+                        "osm_way_id": "13468782",
+                        "type": "residential",
+                        "name": "Carter Drive"
+                    }
+                ],
+                "attribution": "(c) OpenStreetMap (http://openstreetmap.org/) and contributors",
+                "license": "http://creativecommons.org/licenses/by-sa/2.0/"
+            },
+            "type": "Feature",
+            "id": "123133105"
+        },
+        {
+            "distance": 308.18108469988266,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.1830009,
+                    34.0763492
+                ]
+            },
+            "properties": {
+                "highways": [
+                    {
+                        "osm_way_id": "13441050",
+                        "type": "residential",
+                        "name": "Richelieu Avenue"
+                    },
+                    {
+                        "osm_way_id": "13470172",
+                        "type": "residential",
+                        "name": "Richelieu Terrace"
+                    }
+                ],
+                "attribution": "(c) OpenStreetMap (http://openstreetmap.org/) and contributors",
+                "license": "http://creativecommons.org/licenses/by-sa/2.0/"
+            },
+            "type": "Feature",
+            "id": "123621465"
+        },
+        {
+            "distance": 318.5882396290064,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -118.1840727,
+                    34.080806
+                ]
+            },
+            "properties": {
+                "highways": [
+                    {
+                        "osm_way_id": "13313919",
+                        "type": "residential",
+                        "name": "Bedilion Street"
+                    },
+                    {
+                        "osm_way_id": "13468783",
+                        "type": "residential",
+                        "name": "Carter Drive"
+                    }
+                ],
+                "attribution": "(c) OpenStreetMap (http://openstreetmap.org/) and contributors",
+                "license": "http://creativecommons.org/licenses/by-sa/2.0/"
+            },
+            "type": "Feature",
+            "id": "122784176"
+        }
+    ],
+    "address": {
+        "geometry": {
+            "coordinates": [
+                -118.184913,
+                34.076448
+            ],
+            "type": "Point"
+        },
+        "properties": {
+            "address": "4501 Richelieu Ter",
+            "distance": "0.2",
+            "postcode": "90032",
+            "city": "Los Angeles",
+            "county": "Los Angeles",
+            "province": "CA",
+            "country": "US"
+        },
+        "type": "Feature"
+    }
+}

@@ -1,0 +1,9 @@
+2017-07-01 22:15:12,149, line 33, ERROR: ERROR: Failed to get a suitable postgres driver
+2017-07-01 22:15:12,149, line 34, ERROR: You can install pycopg2 with: 	sudo apt-get install python-psycopg2
+2017-07-01 22:15:12,150, line 35, ERROR: Or you can use bpgsql from the amelco svn repository
+2017-07-01 22:20:19,792, line 47, INFO: Opening file 'sportsbook-bets-settled-summary.sql' in read only mode
+2017-07-01 22:20:19,804, line 54, DEBUG: Looking for variables...
+2017-07-01 22:20:19,804, line 59, INFO: Found variables: '['${source_currency}', '${startdate}', '${exclude_acco_ids}', '${enddate}']'
+2017-07-01 22:21:46,663, line 47, INFO: Opening file 'sportsbook-bets-settled-summary.sql' in read only mode
+2017-07-01 22:21:46,667, line 54, DEBUG: Looking for variables...
+2017-07-01 22:21:46,668, line 59, INFO: Found variables: '['${source_currency}', '${startdate}', '${exclude_acco_ids}', '${enddate}']'

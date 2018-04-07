@@ -1,0 +1,25 @@
+{
+	"alias":[
+	{
+		"Hostname":"pambcs01",
+		"user":"amelco",
+		"user":"postgres",
+		"password":"M@yTh3FBWU!"
+
+	},
+	{
+		"Hostname":"pambfs01",
+		"user":"amelco",
+		"user":"postgres",
+		"password":"M@yTh3FBWU!"
+
+	},
+	{
+		"Hostname":"iompamps01",
+		"user":"amelco",
+		"user":"postgres",
+		"password":"M@yTh3FBWU!"
+	}
+	]
+
+}

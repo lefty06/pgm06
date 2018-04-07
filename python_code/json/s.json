@@ -1,0 +1,51 @@
+{
+    "alias": {
+        "In the alias we cannot use the symbol # as a palce holder":"123",
+        "monitor"                   : "ammonitor01",
+        "jump"                      : "enamjump01",
+        "archive"                   : "enamarch01",
+
+
+        "cantest811"                : "cantest811-ssh",
+        "cantest812"                : "cantest812-ssh",
+        "cantest813"                : "cantest813-ssh",
+        "betfair-dev"               : "lnvm7",
+        "betfair1"                  : "sambfs01",
+        "betfair2"                  : "sambfs02",
+        "betfair3"                  : "lnvm7",
+        "betfair-prod-db02"         : "pambfdbs02",
+        "betfair-prod-db01"         : "pambfdbs01",
+
+        "gibux831"                  : "gibux831-ssh",
+        "gibux835"                  : "gibux835-ssh",
+        "gibux839"                  : "gibux839-ssh",
+        "gibux864"                  : "gibux864-ssh",
+        "canux839"                  : "canux839-ssh",
+        "canux864"                  : "canux864-ssh",
+        "canux835"                  : "canux835-ssh"
+    },
+    "server": {
+        "ensammbs#": {
+            "default_username": "postgres",
+            "user": {
+                "postgres":{"password": "Oje7iV+EPT4j96wRB2Sl16Ccc5kiou7LgN3POTw8j2k="},
+                "amelco":{"password": "Oje7iV+EPT4j96wRB2Sl16Ccc5kiou7LgN3POTw8j2k="},
+                "root":{"password": "1BHNvhTR9N3PQk5Ck0mz6aCcc5kiou7LgN3POTw8j2k="}
+            }
+        },
+        "iomstgampss#": {
+            "default_username": "amelco",
+            "user": {
+                "amelco":{"password": "Q8GdQ4163Q92AQdur5+Ep6Ccc5kiou7LgN3POTw8j2k="},
+                "root":{"password": "i+SxNYQ5/XDfWe1Ejbu4BaCcc5kiou7LgN3POTw8j2k="}
+            }
+        },
+        "iomstgampssbs#": {
+            "default_username": "amelco",
+            "user": {
+                "amelco":{"password": "Q8GdQ4163Q92AQdur5+Ep6Ccc5kiou7LgN3POTw8j2k="},
+                "root":{"password": "i+SxNYQ5/XDfWe1Ejbu4BaCcc5kiou7LgN3POTw8j2k="}
+            }
+        }
+    }
+}

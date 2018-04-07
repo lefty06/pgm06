@@ -1,0 +1,27 @@
+{
+    "alias": {
+        "monitor"                   : "ammonitor01",
+        "jump"                      : "enamjump01",
+        "archive"                   : "enamarch01",
+        "cantest811"                : "cantest811-ssh",
+        "cantest812"                : "cantest812-ssh",
+        "cantest813"                : "cantest813-ssh"
+    },
+    "server":{
+        "ensammbs#": {
+            "default_username": "postgres",
+            "user": {
+                "postgres":{"password": "Oje7iV+EPT4j96wRB2Sl16Ccc5kiou7LgN3POTw8j2k="},
+                "amelco":{"password": "Oje7iV+EPT4j96wRB2Sl16Ccc5kiou7LgN3POTw8j2k="},
+                "root":{"password": "1BHNvhTR9N3PQk5Ck0mz6aCcc5kiou7LgN3POTw8j2k="}
+            }
+        },
+        "iomstgampss#": {
+            "default_username": "amelco",
+            "user": {
+                "amelco":{"password": "Q8GdQ4163Q92AQdur5+Ep6Ccc5kiou7LgN3POTw8j2k="},
+                "root":{"password": "i+SxNYQ5/XDfWe1Ejbu4BaCcc5kiou7LgN3POTw8j2k="}
+            }
+        }
+    }
+}

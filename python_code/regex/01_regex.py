@@ -11,7 +11,9 @@ import os
 
 """
 IMPORTANT: Unless an 'r' or 'R' prefix is present, escape sequences in string and bytes literals are interpreted according to rules similar to those used by Standard C.
-re.sub(r'\t','[TAB]','this is my\tblabla text'), re.sub(r'\t','[TAB]',r'this is my\tblabla text') #Anything preceeded by r or R special escape characters will not be interpreted e.g.: \t
+#Anything preceeded by r or R special escape characters will not be interpreted e.g.: \t
+re.sub(r'\t','[TAB]','this is my\tblabla text'), re.sub(
+    r'\t','[TAB]',r'this is my\tblabla text')
 
 MATCH checks for a match only at the beginning of the string, while SEARCH checks for a match anywhere in the string
 SEARCH WILL only search for one match in the string and return a group object
@@ -28,7 +30,8 @@ re.M	Makes $ match the end of a line (not just the end of the string) and makes 
 re.I Makes the search case insensitive
 re.S	Makes a period (dot) match any character, including a newline.
 re.U	Interprets letters according to the Unicode character set. This flag affects the behavior of \w, \W, \b, \B.
-re.X	Permits "cuter" regular expression syntax. It ignores whitespace (except inside a set [] or when escaped by a backslash) and treats unescaped # as a comment marker.
+# as a comment marker.
+re.X	Permits "cuter" regular expression syntax. It ignores whitespace (except inside a set [] or when escaped by a backslash) and treats unescaped
 """
 
 phone_list = """Allison Neu 555-8396
@@ -195,7 +198,7 @@ def example2():
 
 def example3():
     # To extract tag name and it's value
-    fname = '/home/pat/Documents/vscode2018/python_code/ice-checks/python_scripts/regex/01_tags.xml'
+    fname = '/home/pat/Documents/vscode2018/python_code/regex/01_tags.xml'
     with open(fname, "r") as plist:
         for i in plist:
             # #To display all tag names and their text
@@ -228,7 +231,7 @@ def example5():
     # Display only the name of the largest cities in Germany (file1) and their post code(file2)
     # This is very clever because no duplicates will be added due to how dictionnary works ie keys are unique
     PLZ = {}
-    fname = "/home/pat/Documents/vscode2018/python_code/ice-checks/python_scripts/regex/01_post_codes_germany.txt"
+    fname = "/home/pat/Documents/vscode2018/python_code/regex/01_post_codes_germany.txt"
     with open(fname) as fh_post_codes:
         for line in fh_post_codes:
             # Takes , as delimiter and returns a list with 3 valuies (0,1,2)
@@ -252,7 +255,7 @@ def example5():
 
 def example6():
     PLZ = {}
-    fname = "/home/pat/Documents/vscode2018/python_code/ice-checks/python_scripts/regex/01_post_codes_germany.txt"
+    fname = "/home/pat/Documents/vscode2018/python_code/regex/01_post_codes_germany.txt"
     with open(fname) as fh_post_codes:
         for line in fh_post_codes:
             # Takes , as delimiter and returns a list with 3 valuies (0,1,2)
@@ -262,7 +265,7 @@ def example6():
     # Create a dic with city:post_code from 01_post_codes_germany.txt
     # Loop through 01_largest_cities_germany.tx and extract the city name and search for its post code in the dictionnary
     # My version works too
-    fname = "/home/pat/Documents/vscode2018/python_code/ice-checks/python_scripts/regex/01_largest_cities_germany.txt"
+    fname = "/home/pat/Documents/vscode2018/python_code/regex/01_largest_cities_germany.txt"
     with open(fname) as fh_largest_cities:
         print 'city:post_code'
         for line in fh_largest_cities:
@@ -272,7 +275,7 @@ def example6():
             break
 
     # Org solution
-    fname = "/home/pat/Documents/vscode2018/python_code/ice-checks/python_scripts/regex/01_largest_cities_germany.txt"
+    fname = "/home/pat/Documents/vscode2018/python_code/regex/01_largest_cities_germany.txt"
     with open(fname) as fh_largest_cities:
         print 'city:post_code'
         for line in fh_largest_cities:
@@ -283,6 +286,46 @@ def example6():
             break
 
 
+def example7(addtext):
+    """
+    To append text at the end of a file
+    """
+    fname = "/home/pat/Documents/vscode2018/python_code/regex/post_codes_germany.txt"
+    with open(fname, "a") as fh:
+        fh.write(addtext)
+
+
+def example8(addtext):
+    """
+    To read and write at the same time i.e. replace
+    """
+    fname = "/home/pat/Documents/vscode2018/python_code/regex/post_codes_germany.txt"
+    with open(fname, "r+") as fh:
+        # To copy the entire file
+        old = fh.read()
+
+        # To get the cursor back to the top end left
+        fh.seek(0)
+
+        # To write new text and append the old text
+        fh.write(addtext + old)
+
+
+def example9(search_text, replace):
+    """
+    To find and replace text i.e. to open file read/write
+    re.sub(r"regex","replace by", line)
+    e.g.: example9('>(.*)<', '>what<')
+    """
+    fname = "/home/pat/Documents/vscode2018/python_code/regex/post_codes_germany.txt"
+    with open(fname, "r+") as fh:
+        for line in fh:
+            if re.search(search_text, line, re.I):
+                print("before: {} ".format(line))
+                r = re.sub(search_text, replace, line)
+                print ("after: {} ".format(r))
+
+
 def test_search_string():
     """
     Execute to test function search_string
@@ -291,7 +334,7 @@ def test_search_string():
     # Search in file
     print ('\nSearch in file:')
     res = search_string(
-        '.*Simpson.*', file_name='/home/pat/Documents/vscode2018/python_code/ice-checks/python_scripts/regex/01_phone_list.txt')
+        '.*Simpson.*', file_name='/home/pat/Documents/vscode2018/python_code/regex/01_phone_list.txt')
     print "Results: {}\n{}\n".format(len(res), ", ".join(res))
 
     # Search in string
@@ -328,7 +371,8 @@ def test_search_string():
 
 def main():
     # test_search_string()
-    example6()
+    # example8('<html>this is my text</html>\n')
+    example9('>(.*)<', '>what<')
 
 
 if __name__ == '__main__':
